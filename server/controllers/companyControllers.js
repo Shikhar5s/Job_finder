@@ -17,7 +17,18 @@ if(!name || !email || !password || !imageFile){
 }
 
 try{
-    const companyExists=await Company
+    const companyExists=await Company.findOne({email})
+
+    if(companyExists){
+
+        return res.json({succes:false,message:"company already registered"})
+    }
+  const salt=await bcrypt.hash(password,salt)
+
+  const imageUpload=await cloudinary.uploader.upload(imageFile)
+
+  const company=await ompan
+
 
 }
 catch(err){
