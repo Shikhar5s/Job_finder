@@ -1,13 +1,15 @@
 
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
+const connectDB = async () => {
+  mongoose.connection.on('connected', () => console.log('✅ MongoDB connected'));
 
-const connectDB=async()=>{
+  console.log("Mongo URI →", `${process.env.MONGODB_URI}`); // Debug line
 
-    mongoose.connection.on('connected',()=>console.log('database connected'))
-
-    await mongoose.connect(`${process.env.MONGODB_URL}/job-portal`)
-}
+  await mongoose.connect(`${process.env.MONGODB_URI}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+};
 
 export default connectDB;
-

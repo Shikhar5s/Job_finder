@@ -1,8 +1,14 @@
 import React from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
+import { AppContext} from '../context/AppContext';
+import { useContext } from 'react';
 
 export const Dashboard = () => {
+    
+  const navigate=useNavigate()
+
+  const {companyData}=useContext(AppContext);
 
     return (
         <div className="min-h-screen">
@@ -10,26 +16,31 @@ export const Dashboard = () => {
         <div className="shadow py-4">
           <div className="px-5 flex justify-between items-center">
             <img
-              onClick={() => navigate('/')}
+              onClick={(e) => navigate('/')}
               className="max-sm:w-32 cursor-pointer"
               src={assets.logo}
               alt="Logo"
             />
-            <div className="flex items-center gap-3">
-              <p className="max-sm:hidden">Welcome</p>
-              <div className="relative group">
-                <img
-                  className="w-8 border rounded-full"
-                  src={assets.company_icon}
-                  alt="Company Icon"
-                />
-                <div className="absolute hidden group-hover:block top-0 right-0 z-10">
-                  <ul className="list-none m-0 p-2 bg-white rounded-md border">
-                    <li className="py-2 px-2 cursor-pointer pr-10">Log out</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+           {companyData && (
+             <div className="flex items-center gap-3">
+             <p className="max-sm:hidden">Welcome, {companyData.name}</p>
+             <div className="relative group">
+               <img
+                 className="w-8 border rounded-full"
+                 src={companyData.image}
+                 alt="Company Icon"
+               />
+               <div className="absolute hidden group-hover:block top-0 right-0 z-10">
+                 <ul className="list-none m-0 p-2 bg-white rounded-md border">
+                   <li className="py-2 px-2 cursor-pointer pr-10">Log out</li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+
+           )}
+           
+
           </div>
         </div>
       

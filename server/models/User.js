@@ -9,3 +9,7 @@ const userSchema=new mongoose.Schema({
     resume:{type:String},
     image:{type:String,required:true}
 })
+
+const User=new mongoose.model('User',userSchema);
+
+export default User;
