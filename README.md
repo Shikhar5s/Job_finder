@@ -6,8 +6,6 @@ A full-stack job portal that allows users to find and apply for jobs while recru
 
 ## 🚀 Live Demo
 
-Frontend: [https://job-finder.vercel.app](https://job-finder.vercel.app)  
-Backend: [https://job-finder-api.vercel.app](https://job-finder-api.vercel.app) *(optional)*  
 GitHub: [Job Finder Repo](https://github.com/Shikhar5s/Job_finder)
 
 ---
